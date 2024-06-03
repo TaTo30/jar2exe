@@ -13,18 +13,9 @@ jobs:
       - name: Descarga de jar2exe
         run: |
           Invoke-WebRequest -Uri https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip -OutFile j2ewiz.zip
-
-      - name: Extracion de jar2exe
-        run: |
-          dir
-
-      - name: Extracion de jar2exe
-        run: |
           Expand-Archive -Path j2ewiz.zip
-      
-      - name: Extracion de jar2exe
-        run: |
-          dir j2ewiz
+          ./j2ewiz/j2ewiz.exe /reguser osanchez@sitecpro.com /regkey AAA117C-9283-2425-5A26-AB07-B309-F2D7-17C3-BD67 /regexit
+          ./j2ewiz/j2ewiz.com /reginfo
       # - name: Checkout
       #   uses: actions/checkout@v4
       
