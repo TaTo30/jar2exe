@@ -16,6 +16,10 @@ jobs:
           
       - name: Extracion de jar2exe
         run: |
+          dir ${{ github.workspace }}
+
+      - name: Extracion de jar2exe
+        run: |
           Expand-Archive -Path ${{ github.workspace }}\j2ewiz.zip -DestinationPath ${{ github.workspace }}\j2
 
       # - name: Checkout
