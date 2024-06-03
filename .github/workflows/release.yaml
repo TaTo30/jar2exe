@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Descarga de jar2exe
         run: |
-          Invoke-WebRequest -Uri https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip -OutFile j2ewiz.zip
+          Invoke-WebRequest -Uri https://www.jar2exe.com/downloads/releases/2.5.5.1314/Jar2Exe_x86.zip -OutFile j2ewiz.zip
           Expand-Archive -Path j2ewiz.zip
           ./j2ewiz/j2ewiz.exe /regname osanchez@sitecpro.com /regkey AAA117C-9283-2425-5A26-AB07-B309-F2D7-17C3-BD67 /regexit
           ./j2ewiz/j2ewiz.com /reginfo
