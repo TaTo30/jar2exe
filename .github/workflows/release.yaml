@@ -1,0 +1,49 @@
+name: Java CI with Maven
+
+on:
+  workflow_dispatch:
+    
+
+jobs:
+
+  windows-installer:
+    runs-on: windows-latest
+    name: Bundles
+    steps:
+      - name: Configuracion del servidor
+        run: |
+          curl --output j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
+          Expand-Archive -Path j2ewiz.zip
+          ./j2ewiz/j2ewiz.exe /reguser osanchez@sitecpro.com /regkey AAA117C-9283-2425-5A26-AB07-B309-F2D7-17C3-BD67 /regexit
+          ./j2ewiz/j2ewiz.com /reginfo
+
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Bundle - Windows
+        run: |
+          ./j2ewiz/j2ewiz.exe \
+              /jar nexu.jar \
+              /o digisign-winx86.exe \
+              /m lu.nowina.nexu.NexuLauncher \
+              /type windows \
+              /minjre 1.8 /maxjre 1.8 \
+              /platform windows /arch x86 \
+              /checksum /authorize \
+              /icon "digisign.ico, 0" \
+              /ve ProductVersion=2.7 
+              /ve ProductName=Digisign 
+              /ve "LegalCopyright=Copyright (c) 2024" 
+              /ve FileVersion=2.7 
+              /ve "FileDescription=Digisign Plugin" 
+              /ve "LegalTrademarks=Sitecpro, S.A" 
+              /ve "CompanyName=Sitecpro, S.A" 
+              /config "jre_order b" 
+              /config "jre jre"
+
+      - name: Inspect
+        run: |
+          dir ./
+          dir ./j2ewiz
+          
+      
