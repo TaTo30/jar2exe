@@ -12,16 +12,19 @@ jobs:
     steps:
       - name: Descarga de jar2exe
         run: |
-          curl --output ${{ github.workspace }}\j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
-          
-      - name: Extracion de jar2exe
-        run: |
-          dir ${{ github.workspace }}
+          Invoke-WebRequest -Uri https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip -OutFile j2ewiz.zip
 
       - name: Extracion de jar2exe
         run: |
-          Expand-Archive -Path ${{ github.workspace }}\j2ewiz.zip -DestinationPath ${{ github.workspace }}\j2
+          dir
 
+      - name: Extracion de jar2exe
+        run: |
+          Expand-Archive -Path j2ewiz.zip
+      
+      - name: Extracion de jar2exe
+        run: |
+          dir j2ewiz
       # - name: Checkout
       #   uses: actions/checkout@v4
       
