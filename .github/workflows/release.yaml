@@ -10,43 +10,41 @@ jobs:
     runs-on: windows-latest
     name: Bundles
     steps:
-      - name: Configuracion del servidor
+      - name: Descarga de jar2exe
         run: |
-          pwd
           curl --output j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
-          dir
-          Expand-Archive -Path ${{ github.workspace }}\j2ewiz.zip -DestinationPath ${{ github.workspace }}\j2
-          dir
-          dir .\j2
           
+      - name: Extracion de jar2exe
+        run: |
+          Expand-Archive -Path ${{ github.workspace }}\j2ewiz.zip -DestinationPath ${{ github.workspace }}\j2
 
-      - name: Checkout
-        uses: actions/checkout@v4
+      # - name: Checkout
+      #   uses: actions/checkout@v4
       
-      - name: Bundle - Windows
-        run: |
-          ./j2ewiz/j2ewiz.exe \
-              /jar nexu.jar \
-              /o digisign-winx86.exe \
-              /m lu.nowina.nexu.NexuLauncher \
-              /type windows \
-              /minjre 1.8 /maxjre 1.8 \
-              /platform windows /arch x86 \
-              /checksum /authorize \
-              /icon "digisign.ico, 0" \
-              /ve ProductVersion=2.7 
-              /ve ProductName=Digisign 
-              /ve "LegalCopyright=Copyright (c) 2024" 
-              /ve FileVersion=2.7 
-              /ve "FileDescription=Digisign Plugin" 
-              /ve "LegalTrademarks=Sitecpro, S.A" 
-              /ve "CompanyName=Sitecpro, S.A" 
-              /config "jre_order b" 
-              /config "jre jre"
+      # - name: Bundle - Windows
+      #   run: |
+      #     ./j2ewiz/j2ewiz.exe \
+      #         /jar nexu.jar \
+      #         /o digisign-winx86.exe \
+      #         /m lu.nowina.nexu.NexuLauncher \
+      #         /type windows \
+      #         /minjre 1.8 /maxjre 1.8 \
+      #         /platform windows /arch x86 \
+      #         /checksum /authorize \
+      #         /icon "digisign.ico, 0" \
+      #         /ve ProductVersion=2.7 
+      #         /ve ProductName=Digisign 
+      #         /ve "LegalCopyright=Copyright (c) 2024" 
+      #         /ve FileVersion=2.7 
+      #         /ve "FileDescription=Digisign Plugin" 
+      #         /ve "LegalTrademarks=Sitecpro, S.A" 
+      #         /ve "CompanyName=Sitecpro, S.A" 
+      #         /config "jre_order b" 
+      #         /config "jre jre"
 
-      - name: Inspect
-        run: |
-          dir ./
-          dir ./j2ewiz
+      # - name: Inspect
+      #   run: |
+      #     dir ./
+      #     dir ./j2ewiz
           
       
