@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Descarga de jar2exe
         run: |
-          curl --output j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
+          curl --output ${{ github.workspace }}\j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
           
       - name: Extracion de jar2exe
         run: |
