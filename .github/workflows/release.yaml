@@ -12,8 +12,9 @@ jobs:
     steps:
       - name: Configuracion del servidor
         run: |
+          pwd
           curl --output j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
-          Expand-Archive -Path j2ewiz.zip -DestinationPath ./
+          Expand-Archive -Path j2ewiz.zip -DestinationPath ./j2ewiz
           
 
       - name: Checkout
