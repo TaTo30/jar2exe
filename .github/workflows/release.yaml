@@ -14,7 +14,10 @@ jobs:
         run: |
           pwd
           curl --output j2ewiz.zip --url https://www.jar2exe.com/download/sites/default/files/download/Jar2Exe_x86.zip
-          Expand-Archive -Path ${{ github.workspace }}/j2ewiz.zip -DestinationPath ${{ github.workspace }}
+          dir
+          Expand-Archive -Path ${{ github.workspace }}\j2ewiz.zip -DestinationPath ${{ github.workspace }}\j2
+          dir
+          dir .\j2
           
 
       - name: Checkout
